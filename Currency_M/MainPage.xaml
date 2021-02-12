@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundImage="blue-d.jpg"
+             
+             x:Class="Currency_M.MainPage"
+             >
+    <ContentPage.Content>
+        <StackLayout Padding="50,10,50,0" IsClippedToBounds="True" Orientation="Vertical">
+            <Frame BackgroundColor="#343a40" Padding="10" CornerRadius="10">
+                <Label Text="Currency Converter" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            </Frame>
+            <!--<Button Text="Push to convert" Clicked="OnButtonClicked"/>-->
+            <FlexLayout Direction="Column"
+               BackgroundColor="#343a40"
+                        Padding="20"
+                       
+                JustifyContent="SpaceEvenly">
+                <Label Text="Quantity: " HorizontalOptions="Start" Margin="0,0,0,15"
+                   TextColor="White" FontSize="Medium" />
+
+                <Entry x:Name ="Quantity" Keyboard="Numeric" 
+                 Placeholder="Enter quantity"
+                 TextChanged="OnTextChanged"     
+                 HorizontalOptions="FillAndExpand" Text="{Binding Quantity}" />
+
+                <Label Text="From: " HorizontalOptions="Start" Margin="0,15,0,0"
+
+                   TextColor="White" FontSize="Medium" />
+                <!--<Editor Text="{Binding FromCurrency}" HorizontalOptions="CenterAndExpand" 
+
+                   TextColor="Black" />-->
+                <Picker x:Name="From"
+                    Title="Select a currency"
+                    TitleColor="Red"
+                   
+                    SelectedItem="{Binding FromCurrency}">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>EUR</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                <Label Text="To: " HorizontalOptions="Start" Margin="0,15,0,0" 
+
+                   TextColor="White" FontSize="Medium" />
+                <!--<Editor Text="{Binding ToCurrency}" HorizontalOptions="CenterAndExpand" 
+
+                   TextColor="Black" />-->
+                <Picker x:Name="To"
+                    Title="Select a currency"
+                    TitleColor="Red"
+                    Margin="0,0,0,15"
+                   SelectedItem="{Binding ToCurrency}" >
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>USD</x:String>
+                            <x:String>GBP</x:String>
+                            <x:String>CAD</x:String>
+                            <x:String>AUD</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                <Button Grid.ColumnSpan="2"
+                Grid.Row="2"
+                BackgroundColor="Red"
+                Text="Push to convert"
+                Clicked="OnButtonClicked" />
+            </FlexLayout>
+            <Frame BackgroundColor="#343a40" Padding="10" CornerRadius="10">
+                <Label Text="{Binding CurrencyTotal}" HorizontalTextAlignment="Center"
+                    
+                   TextColor="White" FontSize="Large">
+                </Label>
+
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+
